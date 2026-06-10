@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.8.8] - 2026-06-10 — README v2
+
+### Changed
+- `README.md` 整体重排：before/after 三组示例前置；新增「30 秒上手」（Codex / Claude Code / ChatGPT 三入口 + annotation mode 一句话用法）；场景、力度、scope 压缩为三表一流程；issue #4 的 scope 实测过程折叠进 `<details>`。
+- 横幅从位图换成手写 SVG（`assets/banner-light.svg` / `banner-dark.svg`），用 `<picture>` 适配 GitHub 亮暗主题：文字全部转矢量轮廓（字形来自 Noto Sans SC，SIL OFL 1.1），不依赖访问者系统字体，跨平台渲染一致；视觉改走「红笔审稿」方向——划掉的套话、红色句号、一枚「可直接发」印章。原 `assets/readme-logo.png` 保留未删。
+- 移除项目状态表和项目结构文件树：版本信息由 release 徽章和 CHANGELOG 承担，规则覆盖数字并入评测区。
+- 小节标题去掉版本号，避免随版本腐烂。
+
+### Notes
+- 本版只动 `README.md`、`assets/`（新增两个 banner SVG）与本文件，不改规则与评测；计数为实测同步（benchmark 72 条 = 41 SF + 31 SNF，real samples 19 条）。
+
 ## [1.8.7] - 2026-06-10 — Maintenance Surface 2 / 安装口径与 bounded 下沉
 
 ### Changed
