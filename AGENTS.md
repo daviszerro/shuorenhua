@@ -12,7 +12,7 @@
 
 ## 布局
 
-- `SKILL.md` 是 skill 入口；`evals/` 放评测用例；`automation/` 放评测与自动化脚本。
+- `SKILL.md` 是 AI 腔识别与检测的 skill 入口；`evals/` 放评测用例与诊断准则；`automation/` 放评测与自动化脚本。
 - `tasks/` 是 gitignored 工作区（`current/` 进行中、`archive/` 已完成、`external-inputs/` 外部收集材料）。规划和过程文档只进这里，永不进提交历史。
 
 ## 协作

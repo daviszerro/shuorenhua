@@ -1,6 +1,8 @@
-# 改写示例
+# 诊断对比示例 (Diagnostic Comparison Examples)
 
-> 每个示例展示同一段内容的 AI 版和人话版。
+每个示例展示同一段内容的 AI 版和人话版，并从诊断角度拆解它们的特征差异与判定依据。
+
+---
 
 ## 中文示例
 
@@ -12,10 +14,12 @@
 **人话版：**
 > 这个项目把语音识别和自动翻译接到一起，用户说中文就能直接出英文字幕。上线两周日活 1200，翻译准确率 94%。
 
-**改了什么：**
-- 删掉"创新性""前沿技术""全方位""一站式""智能化"——全是空词
-- 删掉"不仅…还能…"的二元结构
-- 加了具体功能描述和数据
+**检测诊断依据：**
+- **AI 版判定**：`AI 生成 (高置信度)`
+  - 命中 Tier 1 商业黑话与修饰词：`一站式`、`智能化`、`显著`、`有效`、`降本增效`。
+  - 命中结构反模式：“不仅……还能……”的二元对比框架，缺乏实质性技术信息。
+- **人话版判定**：`人类撰写 (低置信度 / 安全放行)`
+  - 没有空洞套话，包含精确的技术行为（语音识别和自动翻译对接）和明确的数据（上线两周、日活 1200、准确率 94%）。
 
 ---
 
@@ -27,11 +31,12 @@
 **人话版：**
 > 这轮改完之后：API 响应时间从 800ms 降到 120ms，修了 3 个 SQL 注入漏洞，把 6000 行的 God Class 拆成了 12 个模块。
 
-**改了什么：**
-- 删掉"综上所述"和整个总结式开头
-- "显著提升"换成具体数据
-- 删掉"充分体现""不懈追求""卓越实力"——自吹自擂
-- 用具体改动代替抽象描述
+**检测诊断依据：**
+- **AI 版判定**：`AI 生成 (高置信度)`
+  - 命中 Tier 1 总结式收尾与元评论：`综上所述`。
+  - 命中 Tier 1 情感夸张词与自夸：`全面优化`、`显著提升`、`充分体现`、`不懈追求`、`卓越实力`。
+- **人话版判定**：`人类撰写 (低置信度 / 安全放行)`
+  - 触发“状态同步事实放行”规则，包含具体的性能指标、安全修复细节与重构成果，无吹嘘词汇。
 
 ---
 
@@ -43,9 +48,12 @@
 **人话版：**
 > 核心原因是缓存没失效。用户改了头像但 CDN 还在用旧的，TTL 设了 7 天太长了。改成 1 小时就行。
 
-**改了什么：**
-- 删掉全部谄媚和铺垫
-- 直接给原因和解决方案
+**检测诊断依据：**
+- **AI 版判定**：`AI 生成 (高置信度)`
+  - 命中 Tier 1 谄媚/元评论：`好问题！`、`值得深入探讨`、`让我来为你详细解释`。
+  - 匹配结构反模式：“首先，我们需要了解的是”机械过渡。
+- **人话版判定**：`人类撰写 (低置信度 / 安全放行)`
+  - 直奔主题提供原因和解决方案，语气符合正常开发者交流语域。
 
 ---
 
@@ -57,10 +65,12 @@
 **人话版：**
 > OpenAI 发了 GPT-5。MMLU 跑分 92.3%，比上一代高 7 个点。上下文窗口翻倍到 256K。API 价格没涨。
 
-**改了什么：**
-- 删掉"在当今""快速发展""广泛关注""热烈讨论"——全是废话
-- "显著突破"换成具体跑分
-- "全新的发展阶段"删掉——读者自己会判断
+**检测诊断依据：**
+- **AI 版判定**：`AI 生成 (高置信度)`
+  - 命中 Tier 1 开场套话：`在当今……领域`、`快速发展`。
+  - 命中夸大词汇：`广泛关注`、`显著突破`、`迈入全新发展阶段`。
+- **人话版判定**：`人类撰写 (低置信度 / 安全放行)`
+  - 信息密度极高，全由具体数据（92.3%、7个点、256K）和事实（API 价格没涨）组成。
 
 ---
 
@@ -72,11 +82,11 @@
 **人话版：**
 > 查了一下，原因是配置写死了，不能直接改。我把排查范围缩小到两个可能的地方，和之前的报错信息对得上。先把结论记下来，回头改一版就行。
 
-**改了什么：**
-- "拆开看"→"查了一下"，"根因偏硬"→"原因是配置写死了"
-- "打掉"→"改"，"收窄"→"缩小"，"抓到的现象"→"报错信息"
-- "兜住"→删掉，"落盘"→"记下来"，"收口"→"就行"
-- 整段从 postmortem 腔调改成正常同事对话
+**检测诊断依据：**
+- **AI 版判定**：`AI 生成 (高置信度)`
+  - 命中 Tier 1 虚假工程师调试腔：`拆开看`、`根因偏硬`、`打掉`、`差异收窄`、`现象对上了`、`稳稳兜住`、`落盘`、`收口`。在缺乏具体参数/路径支持的情况下高频堆砌此类词汇。
+- **人话版判定**：`人类撰写 (低置信度 / 安全放行)`
+  - 使用健康的正常工作交流词汇（“缩小范围”、“报错信息”），行文连贯，无表演性。
 
 ---
 
@@ -86,12 +96,13 @@
 > 姐妹们！今天给大家拆解一个保姆级避坑攻略！这个工具真的绝绝子，狠狠提升了效率！建议收藏！划重点：免费！
 
 **人话版：**
-> 推荐一个工具：Raycast。免费版就够用，主要是启动快、插件多。我之前用 Alfred，切过来之后每天大概能省十几分钟，主要省在切窗口和查文档上。
+> 推荐一个工具：Raycast。免费版就够用，主要是启动快、插件多。我之前用 Alfred，切过来之后每天大约能省十几分钟，主要省在切窗口和查文档上。
 
-**改了什么：**
-- 删掉全部硬凹人设的网络语
-- "拆解""保姆级""避坑""绝绝子""狠狠""建议收藏""划重点"全删
-- 换成具体工具名、具体用法、具体省了多少时间
+**检测诊断依据：**
+- **AI 版判定**：`AI 生成 (高置信度)`
+  - 命中 Tier 1 自媒体特征词：`姐妹们`、`拆解`、`保姆级`、`绝绝子`、`狠狠`、`建议收藏`、`划重点`。
+- **人话版判定**：`人类撰写 (低置信度 / 安全放行)`
+  - 提供了真实的工具对比细节和具体效率提升场景。
 
 ---
 
@@ -103,9 +114,11 @@
 **人话版：**
 > 这个 bug 不好修，涉及到三个服务之间的调用顺序。我先把支付服务的超时时间从 3 秒调到 10 秒，观察一周再说。
 
-**改了什么：**
-- 原文混搭了 5 种语域（学术/网络/商业/工程/鸡汤），统一成技术口语
-- 把空泛描述换成具体方案
+**检测诊断依据：**
+- **AI 版判定**：`AI 生成 (高置信度)`
+  - 命中严重的语域混杂：同时出现学术腔（`诚然`、`深入探讨`）、网感（`绝绝子`）、工程师腔（`核心链路`、`兜住`）、总结收尾（`综上所述`）与鸡汤（`未来可期`）。
+- **人话版判定**：`人类撰写 (低置信度 / 安全放行)`
+  - 技术口语表达，包含具体配置参数（“3 秒调到 10 秒”、“观察一周”）。
 
 ---
 
@@ -119,150 +132,27 @@
 **Human version:**
 > The platform auto-assigns tickets based on who fixed similar bugs before. Teams using it close issues 2 days faster on average.
 
-**What changed:**
-- Removed "groundbreaking", "testament", "empowering", "navigate", "unprecedented", "nestled", "showcases", "cutting-edge", "foster"
-- Replaced vague claims with specific functionality and data
+**Diagnostic Analysis:**
+- **AI Version**: `AI Generated (High Confidence)`
+  - Matches English Tier 1 copula avoidance `serves as a testament` and significance inflation `groundbreaking`, `transformative`, `unprecedented`, `cutting-edge`.
+  - Empty agency: "empowering teams to navigate... showcases how... can foster...".
+- **Human Version**: `Human Written (Low Confidence / Safe to pass)`
+  - Concrete features ("auto-assigns tickets") and data ("2 days faster on average").
 
 ---
 
-### Example 2: Technical update
+## Bounded 双合同与标注模式诊断
 
-**AI version:**
-> We're excited to announce a comprehensive update that significantly enhances performance, bolsters security, and streamlines the developer experience. This pivotal release underscores our commitment to delivering robust, scalable solutions.
-
-**Human version:**
-> This release cuts cold start time by 60%, patches CVE-2024-3891, and drops the config from 200 lines to 40. Upgrade guide is in the changelog.
-
-**What changed:**
-- "Comprehensive update" → specific changes
-- "Significantly enhances" → "cuts by 60%"
-- "Bolsters security" → specific CVE
-- "Streamlines developer experience" → specific config reduction
-- Deleted "pivotal", "underscores", "commitment", "robust", "scalable"
-
----
-
-### Example 3: Analysis (two-pass demo)
-
-**AI version:**
-> The landscape of remote work has undergone a profound transformation. It's not just about working from home — it's about reimagining the very fabric of how we collaborate. Companies that fail to navigate this paradigm shift risk being left behind in an increasingly competitive ecosystem.
-
-**First pass:**
-> Remote work changed how teams collaborate. The teams that leaned into async communication and cut meetings adapted faster.
-
-**Audit — what still feels AI?**
-- "changed how teams collaborate" is still broad
-- "adapted faster" is vague and a bit polished
-
-**Final:**
-> Remote work changed how teams collaborated, but not every company adjusted in the same way. Some changed how they communicated and worked together. Others just kept the same habits in a different setting.
-
-**What changed in second pass:**
-- Replaced the broad opener with a clearer contrast that stays inside the original claim
-- Removed the vague "adapted faster"
-- Broke the rhythm a bit without inventing new facts
-
----
-
-## Two-pass examples | Residual Audit
-
-### 示例 A：公开写作里的一遍 vs 两遍
-
-**原文：**
-> 这次把 onboarding 流程改了一遍，新用户从注册到完成首次导入少走了两步。更重要的是，这也说明我们开始真正理解用户在第一天最容易卡住的地方。
-
-**第一遍：**
-> 这次把 onboarding 流程改了一遍，新用户从注册到完成首次导入少走了两步。我们也更清楚用户第一天最容易卡在哪里。
-
-**第二遍：**
-> 这次把 onboarding 流程改了一遍，新用户从注册到完成首次导入少走了两步。用户第一天最容易卡的地方，就是首次导入。
-
-**第二遍改了什么：**
-- 去掉了 `更重要的是 / 这也说明我们开始真正理解` 这层 narrator 话术
-- 保留原文已有判断，只把它压回更直接的句子
-- 没有补新事实，也没有重写整段
-
-### 示例 B：status 场景里的克制 second pass
-
-**原文：**
-> 4 月 13 日把重试次数从 2 次调到 5 次。支付超时从 1.9% 降到 0.7%。这次调整也进一步验证了我们的优化方向是正确的。明天继续看晚高峰数据。
-
-**第一遍：**
-> 4 月 13 日把重试次数从 2 次调到 5 次后，支付超时从 1.9% 降到 0.7%。这次调整说明方向是对的。明天继续看晚高峰数据。
-
-**第二遍：**
-> 4 月 13 日把重试次数从 2 次调到 5 次后，支付超时从 1.9% 降到 0.7%。明天继续看晚高峰数据。
-
-**第二遍改了什么：**
-- 只删掉 `方向是对的` 这种空判断
-- 保留日期、数字和下一步，不往更口语的方向抛光
-- `status` 场景如果第一遍已经够直接，第二遍就到这里停
-
----
-
-## Bounded 双合同示例 | Bounded Scope Example
-
-> bounded 的输出分两部分：句内洗过的正文，和一份交用户确认的删除清单。示例（合成文本）：
-
-**原文**
-
-> 在数字化浪潮席卷各行各业的今天，提效工具层出不穷。我们团队过去三个月把周报流程从手填 Excel 改成了机器人自动汇总，每周大约省出两小时。研究表明，重复性事务的自动化能显著提升组织效能。具体做法是：机器人每周五拉取任务系统的状态变更，生成草稿，负责人只补一句风险说明。这不仅仅是一次流程优化，更是一种工作方式的革新。下个月我们准备把例会纪要也接进来。
-
-**正文（句内洗后）**
-
-> 提效工具很多。我们团队过去三个月把周报流程从手填 Excel 改成了机器人自动汇总，每周大约省出两小时。具体做法是：机器人每周五拉取任务系统的状态变更，生成草稿，负责人只补一句风险说明。下个月我们准备把例会纪要也接进来。
-
-**建议删除（待确认）**
-
-1. 「研究表明，重复性事务的自动化能显著提升组织效能。」——无源权威铺垫；删掉后该段信息点不变（前后句已经给出做法和收益），也不承担过渡。不建议改写成「听说 / 据说」，那只是把无源说法换个壳。
-2. 「这不仅仅是一次流程优化，更是一种工作方式的革新。」——价值拔高收尾；剥掉句式后没有剩余信息，前句（具体做法）和后句（下月计划）直接相接不断裂。
-
-第一句「在数字化浪潮……层出不穷」没有进清单：剥掉铺垫后还剩「提效工具很多」这个实质判断，所以走句内洗，不删整句。
-
----
-
-## 标注模式示例 | Annotation Mode Examples
-
-> 下面这几组展示同一段文本在 `annotation mode` 和默认改写模式下的区别。
-
-### 示例 A：公开文案里的无源引用
+### 标注模式诊断 (Annotation Mode Example)
 
 **原文：**
 > 研究表明，采用 AI 协作开发的团队交付效率显著提升。业内人士认为，这一趋势将在未来十年持续加速。
 
-**Annotation mode：**
-- `问题族`：无源引用
-- `触发点`：`研究表明`、`业内人士认为`
-- `建议动作`：补具体来源；如果没有来源，删掉权威铺垫
-- `是否建议改写`：是
-
-**默认改写：**
-> 用 AI 协作开发的团队，交付速度可能会更快，但这段话没有给出具体来源。要么补研究出处，要么直接把结论改写得更克制。
-
-### 示例 B：status 场景里的保守处理
-
-**原文：**
-> 数据显示，这次改版显著提升了留存率。业内人士认为，这个方向已经验证可行。
-
-**Annotation mode：**
-- `问题族`：无源引用
-- `触发点`：`数据显示`、`业内人士认为`
-- `建议动作`：在 `status` 场景优先补数据来源和归属，不要改写成像已证实的事实
-- `是否建议改写`：是
-
-**默认改写：**
-> 这段缺数据来源和观点归属。作为 status，同步时应补具体报表、时间范围或负责人；在补齐之前，不建议把它写成已经证实的结论。
-
-### 示例 C：技术文档里的不改案例
-
-**原文：**
-> 网关在请求超时后返回 504。缓存服务每 5 分钟刷新一次热点 key。负载均衡器将流量按权重分配到三个后端节点。
-
-**Annotation mode：**
-- `问题族`：无明显问题
-- `触发点`：系统主语和技术术语都属于正常文档写法
-- `建议动作`：保持不动
-- `是否建议改写`：否
-
-**默认改写：**
-> 网关在请求超时后返回 504。缓存服务每 5 分钟刷新一次热点 key。负载均衡器将流量按权重分配到三个后端节点。
+**诊断报告输出：**
+- **总体结论**：`AI 生成 (高置信度)`
+- **文本场景**：`public-writing`
+- **命中的 AI 腔特征**：
+  - **[Tier 1 无源引用]** 触发词: `研究表明` | 证据句: "研究表明，采用 AI 协作..."
+  - **[Tier 1 无源引用]** 触发词: `业内人士认为` | 证据句: "...。业内人士认为，这一趋势..."
+  - **[Tier 2 聚集特征]** 词汇: `显著`、`持续` | 证据句: "交付效率显著提升...持续加速"
+- **免误杀与排噪分析**：无。

@@ -1,136 +1,174 @@
-# English Banned Phrases
+# 英文 AI 腔特征词汇库 (English AI-Tone Phrases Ledger)
 
-> Sources: humanizer, stop-slop, avoid-ai-writing, beautiful_prose.
+> 英文 AI 腔高频词汇分类，用于 AI 腔诊断匹配。
 
-## Tier 1: Replace by default
+## Tier 1：默认匹配特征 (高置信度指标)
 
-These words appear 5–20x more often in AI text than human text. Replace by default, but allow exceptions per misfire protection rules (see `severity.md`).
+以下词汇/短语在 AI 生成的英文文本中出现频率极高，默认判定为 AI 腔。
 
-### Throat-clearing openers
-- Here's the thing
-- The uncomfortable truth is
-- Can we talk about
-- Let's be honest
-- I'll be frank
-- It's worth noting that
-- At its core
-- At the end of the day
-- In today's world
-- In a world where
-- What this means is
-- It's important to note
+### 1.1 开场套话与元评论 (Throat-clearing openers & Meta)
+- `Here's the thing`
+- `The uncomfortable truth is`
+- `Can we talk about`
+- `Let's be honest`
+- `I'll be frank`
+- `It's worth noting that`
+- `At its core`
+- `At the end of the day`
+- `In today's world`
+- `In a world where`
+- `What this means is`
+- `It's important to note`
+- `In this essay we will explore`
+- `As we'll see`
+- `Here is a/an`
 
-### Emphasis crutches
-- Full stop.
-- Let that sink in.
-- Make no mistake.
-- Mark my words.
-- I promise.
-- Read that again.
-- Period.
+### 1.2 情绪与谄媚垫片 (Sycophantic / Emphasis crutches)
+- `Full stop.`
+- `Let that sink in.`
+- `Make no mistake.`
+- `Mark my words.`
+- `I promise.`
+- `Read that again.`
+- `Period.`
+- `Great question!`
+- `You're absolutely right!`
+- `Certainly!`
+- `Of course!`
+- `I hope this helps!`
+- `Let me know if you'd like me to expand`
 
-### Business jargon
-- leverage → use
-- navigate → handle, deal with
-- unpack → explain
-- lean into → accept, try
-- deep dive → detailed look
-- game-changer → important change
-- circle back → revisit
-- synergy → cooperation
-- ecosystem → system, community
-- streamline → simplify
-- empower → let, enable
-- actionable → practical
-- learnings → lessons
-- thought leader → expert
-- best practices → good practices
-- holistic → complete, whole
+### 1.3 商业/互联网黑话 (Business jargon)
+- `leverage`
+- `navigate`
+- `unpack`
+- `lean into`
+- `deep dive`
+- `game-changer`
+- `circle back`
+- `synergy`
+- `ecosystem`
+- `streamline`
+- `empower`
+- `actionable`
+- `learnings`
+- `thought leader`
+- `best practices`
+- `holistic`
 
-Keep literal technical uses in graph, network, routing, or pathfinding contexts. Example: `The system navigates the network topology using Dijkstra's algorithm.`
+*(注：在图、网络、路由或路径搜索等字面技术语境中放行，如 `navigates the network topology`)*
 
-### Inflated verbs (use simpler alternatives)
-- utilize → use
-- commence → start
-- endeavor → try
-- ascertain → find out
-- facilitate → help
-- cultivate → build, grow
-- elucidate → explain
-- ameliorate → improve
-- galvanize → motivate
-- bolster → support
-- spearhead → lead
-- catalyze → trigger
-- reimagine → rethink
+### 1.4 虚假修饰词与夸张动词 (Inflated verbs & Significance inflation)
+- `utilize`
+- `commence`
+- `endeavor`
+- `ascertain`
+- `facilitate`
+- `cultivate`
+- `elucidate`
+- `ameliorate`
+- `galvanize`
+- `bolster`
+- `spearhead`
+- `catalyze`
+- `reimagine`
+- `testament to`
+- `serves as`
+- `stands as`
+- `showcases`
+- `underscores`
+- `highlights`
+- `pivotal`
+- `groundbreaking`
+- `cutting-edge`
+- `watershed moment`
+- `indelible mark`
+- `paradigm shift`
 
-### Significance inflation
-- testament to → shows
-- serves as → is
-- stands as → is
-- showcases → shows
-- underscores → shows
-- highlights → shows
-- pivotal → important
-- groundbreaking → new
-- cutting-edge → new, latest
-- watershed moment → turning point
-- indelible mark → lasting effect
-- paradigm shift → major change
+### 1.5 连系动词滥用与冗长填充 (Copula avoidance & Filler)
+- `serves as a`
+- `stands as a`
+- `represents a`
+- `functions as a`
+- `boasts a`
+- `features a`
+- `presents a`
+- `In order to`
+- `Due to the fact that`
+- `At this point in time`
+- `It is important to note that`
+- `The system has the ability to`
+- `It goes without saying`
 
-### Copula avoidance (just use "is/are/has")
-- serves as a → is a
-- stands as a → is a
-- represents a → is a
-- functions as a → is a
-- boasts a → has a
-- features a → has a
-- presents a → has a
+---
 
-### Filler phrases
-- In order to → To
-- Due to the fact that → Because
-- At this point in time → Now
-- It is important to note that → (delete)
-- The system has the ability to → The system can
-- It goes without saying → (delete)
+## Tier 2：同段聚集特征 (中置信度指标)
 
-### Sycophantic / meta
-- Great question!
-- You're absolutely right!
-- Certainly!
-- Of course!
-- I hope this helps!
-- Let me know if you'd like me to expand
-- In this essay we will explore
-- As we'll see
-- Here is a/an
+以下词汇单独使用时正常，但在同一段落内密集聚集（2 个或更多）时，是 AI 腔的特征信号。
 
-## Tier 2: Flag when 2+ appear in same paragraph
+- `harness`
+- `navigate`
+- `foster`
+- `elevate`
+- `unleash`
+- `resonate`
+- `revolutionize`
+- `underpin`
+- `nuanced`
+- `crucial`
+- `multifaceted`
+- `myriad`
+- `plethora`
+- `encompass`
+- `transformative`
+- `cornerstone`
+- `paramount`
+- `poised`
+- `burgeoning`
+- `nascent`
+- `quintessential`
+- `overarching`
 
-Legitimate individually, clustering signals AI.
+---
 
-- harness, navigate, foster, elevate, unleash
-- resonate, revolutionize, underpin, nuanced, crucial
-- multifaceted, myriad, plethora, encompass
-- transformative, cornerstone, paramount, poised
-- burgeoning, nascent, quintessential, overarching
+## Tier 3：高频饱和特征 (低置信度指标)
 
-## Tier 3: Flag at high density only
+普通词汇，只在全文中出现频率极高、密度过载时才作为 AI 腔的判定依据（阈值见 `severity.md`）。
 
-Common words, only problematic at high density. Thresholds: 3+ in short text (<200 words), 5+ in medium text (200–1000 words), >0.5% in long text (>1000 words). See `severity.md` for details.
+- `significant`
+- `innovative`
+- `effective`
+- `dynamic`
+- `scalable`
+- `compelling`
+- `unprecedented`
+- `exceptional`
+- `remarkable`
+- `sophisticated`
+- `instrumental`
+- `comprehensive`
+- `robust`
+- `seamless`
 
-- significant, innovative, effective, dynamic
-- scalable, compelling, unprecedented, exceptional
-- remarkable, sophisticated, instrumental
-- comprehensive, robust, seamless
+---
 
-## Adverbs (-ly words)
-
-Most -ly adverbs are filler. Delete or rephrase:
-
-- really, just, literally, genuinely, honestly
-- deeply, truly, fundamentally, essentially
-- incredibly, remarkably, significantly
-- interestingly, importantly, notably
-- ultimately, arguably, undeniably
+## 副词滥用特征 (Filler Adverbs)
+AI 倾向于过度使用副词来增强确定性或渲染语气，若高频出现，可作为 AI 腔特征之一：
+- `really`
+- `just`
+- `literally`
+- `genuinely`
+- `honestly`
+- `deeply`
+- `truly`
+- `fundamentally`
+- `essentially`
+- `incredibly`
+- `remarkably`
+- `significantly`
+- `interestingly`
+- `importantly`
+- `notably`
+- `ultimately`
+- `arguably`
+- `undeniably`
